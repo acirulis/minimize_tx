@@ -3,6 +3,7 @@ import itertools
 
 
 class InvalidTxList(Exception):
+    """Elements of Tx list should always sum to zero"""
     pass
 
 
