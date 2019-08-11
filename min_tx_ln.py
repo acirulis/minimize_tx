@@ -1,6 +1,5 @@
 import numpy as np
 import scipy.optimize
-import pulp
 
 
 def get_const_mat(N):

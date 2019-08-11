@@ -14,3 +14,22 @@ Some links researched:
 
 
 
+Example: 
+
+1. Payments between group of people:
+   1. Person A paid 0€ for everybody
+   2. Person B paid 4€ for everybody
+   3. Person C paid 8€ for everybody
+   4. Extra: Person A paid 2€ for Person B (Adjusted spend)
+2. Calculate average spent amount for group: (8+4+0) / 3 = 4€
+3. Calculate adjusted spend (1.4)
+4. Calculate individual balance:
+
+| Person   | Spent for Group | Average spend | Adjusted spend | Individual balance |
+| -------- | --------------- | ------------- | -------------- | ------------------ |
+| Person A | 0€              | 4€            | 2€             | -2€                |
+| Person B | 4€              | 4€            | 6€             | -2€                |
+| Person C | 8€              | 4€            | 4€             | 4€                 |
+
+As you can see, individual balance sums up to 0€ (it always must!) and minimal number of transaction can be found to settle between persons.
+
