@@ -9,10 +9,10 @@ class Found(Exception): pass
 
 # data = {'p1': 7, 'p2': -4, 'p3': 21, 'p4': -56, 'p5': 32}
 # data = {'p1': -6, 'p2': -5, 'p3': -5, 'p4': 3, 'p5': 3, 'p6': 10, 'p7': 8, 'p8': -8}
-# data = {'p1': 10, 'p2': 3, 'p3': 3, 'p4': -6, 'p5': -5, 'p6': -5}
+data = {'p1': 10, 'p2': 3, 'p3': 3, 'p4': -6, 'p5': -5, 'p6': -5}
 # data = {'p1': -1, 'p2': 5, 'p3': -4, 'p4': 8, 'p5': -8}
 # data = {'Andis': -4, 'Janis': 0, 'Peteris': 4}
-data = {'Andis': 0, 'Janis': -4, 'Peteris': 4}
+# data = {'Andis': 0, 'Janis': -4, 'Peteris': 4}
 
 def find_groups(data):
     if len(data) == 0:
@@ -49,7 +49,7 @@ def transactions_per_group(data):
             # print('Transaction found {} ({}) settles with {} ({}), left {}'.format(_min, data[_min], _max, data[_max],
             #                                                                        data[_max] + data[_min]))
             tx_list.append(
-                'Transaction found {} ({}) settles with {} ({}), left {}'.format(_min, data[_min], _max, data[_max],
+                'Transaction found: {} ({}) settles with {} ({}), left {}'.format(_min, data[_min], _max, data[_max],
                                                                                  data[_max] + data[_min]))
             if abs(data[_min]) == smallest:
                 data[_max] = data[_max] + data[_min]
@@ -68,13 +68,15 @@ print('Data: ', T)
 if T.sum() == 0:
     gr = find_groups(T)
     print('Unique groups found: ', gr)
-    tx_list = []
-    for group in gr:
-        tx_list += transactions_per_group(group)
+    tx_list = {}
+    for gn, group in enumerate(gr):
+        tx_list[gn] = transactions_per_group(group)
     # display results
     print('= RESULTS =')
-    for ix, tx in enumerate(tx_list):
-        print('#{} {} '.format(ix + 1, tx))
+    for key,val in tx_list.items():
+        print('Group {}'.format(key))
+        for index, tx in enumerate(val):
+            print('Tx{}: {}'.format(index, tx))
 else:
     print('Incorrect data, must sum up to 0')
 
